@@ -1,0 +1,40 @@
+import chess
+
+board = chess.Board()
+legal = list(board.legal_moves)
+legal_knight = []
+
+#Pieces
+white_king = 'e1'
+black_king = 'e8'
+
+white_queen = 'd1'
+black_queen = 'd8'
+
+white_castle_1 = 'a1'
+white_castle_2 = 'h1'
+black_castle_1 = 'a8'
+black_castle_2 = 'h8'
+
+white_bishop_1 = 'c1'
+white_bishop_2 = 'f1'
+black_bishop_1 = 'c8'
+black_bishop_2 = 'f8'
+
+white_knight_1 = 'b1'
+white_knight_2 = 'b8'
+black_knight_1 = 'g1'
+black_knight_2 = 'g8'
+
+pawn = ''
+
+def makeMovement(piece, moveto):
+    move = chess.Move.from_uci(piece + moveto)
+    board.push(move)
+    return board
+
+def checkKnight():
+    for l in legal:
+        if (str(l)[:2] == white_knight_1 or str(l)[:2] == white_knight_2)  or (str(l)[:2] == black_knight_1 or str(l)[:2] == black_knight_2):
+            legal_knight.append(str(l))
+    return legal_knight
